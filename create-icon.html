@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SATORI Icon Generator</title>
+</head>
+<body>
+  <canvas id="iconCanvas" width="1024" height="1024" style="border:1px solid #d3d3d3;"></canvas>
+  <br>
+  <button onclick="downloadIcon()">Download Icon</button>
+
+  <script>
+    const canvas = document.getElementById("iconCanvas");
+    const ctx = canvas.getContext("2d");
+    
+    // Background gradient
+    const gradient = ctx.createLinearGradient(0, 0, 1024, 1024);
+    gradient.addColorStop(0, "#2a6bff");
+    gradient.addColorStop(1, "#41297b");
+    
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 1024, 1024);
+    
+    // Text "SATORI"
+    ctx.fillStyle = "white";
+    ctx.font = "bold 160px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("SATORI", 512, 512);
+    
+    // Download function
+    function downloadIcon() {
+      const link = document.createElement('a');
+      link.download = 'app-icon.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+  </script>
+</body>
+</html> 
